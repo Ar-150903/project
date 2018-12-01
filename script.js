@@ -14,7 +14,7 @@ function fillMatrix(n, m) {
     return matrix;
 }
 
-for (var g = 0; g < 120; g++) {
+for (var g = 0; g < 600; g++) {
     var x = Math.floor(Math.random() * 50);
     var y = Math.floor(Math.random() * 50);
     matrix[y][x] = 1;
@@ -26,19 +26,19 @@ for (var g = 0; g < 100; g++) {
     matrix[y][x] = 2;
 }
 
-for (var g = 0; g < 100; g++) {
+for (var g = 0; g < 65; g++) {
     var x = Math.floor(Math.random() * 50);
     var y = Math.floor(Math.random() * 50);
     matrix[y][x] = 3;
 }
 
-for (var g = 0; g < 60; g++) {
+for (var g = 0; g < 120; g++) {
     var x = Math.floor(Math.random() * 50);
     var y = Math.floor(Math.random() * 50);
     matrix[y][x] = 4;
 }
 
-for (var g = 0; g < 80; g++) {
+for (var g = 0; g < 120; g++) {
     var x = Math.floor(Math.random() * 50);
     var y = Math.floor(Math.random() * 50);
     matrix[y][x] = 5;
@@ -50,6 +50,7 @@ var xotakerArr = [];
 var gishatichArr = [];
 var amenakerArr = [];
 var mardArr = [];
+var shunArr = [];
 
 function setup() {
     for (var y = 0; y < matrix.length; y++) {
@@ -77,6 +78,11 @@ function setup() {
             else if (matrix[y][x] == 5) {
                 var mr = new Mard(x, y);
                 mardArr.push(mr);
+            }
+
+            else if (matrix[y][x] == 6) {
+                var sh = new Shun(x, y);
+                shunArr.push(sh);
             }
         }
     }
@@ -109,6 +115,10 @@ function draw() {
 
             else if (matrix[y][x] == 5) {
                 fill("#ffe0bd");
+            }
+
+            else if (matrix[y][x] == 6) {
+                fill("purple");
             }
 
             else if (matrix[y][x] == 0) {
@@ -153,5 +163,12 @@ function draw() {
         mardArr[i].eat();
         mardArr[i].mult();
         mardArr[i].die();
+    }
+
+    for (var i in shunArr) {
+        shunArr[i].move();
+        shunArr[i].eat();
+        shunArr[i].mult();
+        shunArr[i].die();
     }
 }
