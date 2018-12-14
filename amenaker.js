@@ -1,4 +1,6 @@
-class  Amenaker extends LivingCreature{
+var LivingCreature = require("./class.js");
+
+module.exports=class  Amenaker extends LivingCreature{
     constructor(x, y, index) {
         super(x, y, index);
         this.energy=20;
@@ -94,7 +96,8 @@ class  Amenaker extends LivingCreature{
     }
 
     mult() {
-        var empty = random(this.chooseCell(0));
+        var arr = this.chooseCell(0);
+        var empty = arr[Math.floor(Math.random()*arr.length)];
         if (empty && this.energy>30) {
             var newX = empty[0];
             var newY = empty[1];
@@ -105,7 +108,8 @@ class  Amenaker extends LivingCreature{
     }
 
     move(){
-        var empty = random(this.chooseCell2(0));
+        var arr = this.chooseCell2(0);
+        var empty = arr[Math.floor(Math.random()*arr.length)];
         this.energy-=2;
         if (empty) {
             var newX = empty[0];
@@ -119,10 +123,14 @@ class  Amenaker extends LivingCreature{
     }
 
     eat(){
-        var food1 = random(this.chooseCell2(1));
-        var food2 = random(this.chooseCell2(2));
-        var food3 = random(this.chooseCell2(3));
-        var food4 = random(this.chooseCell2(5));
+        var arr1 = this.chooseCell2(1);
+        var food1 = arr1[Math.floor(Math.random()*arr1.length)];
+        var arr2 = this.chooseCell2(2);
+        var food2 = arr2[Math.floor(Math.random()*arr2.length)];
+        var arr3 = this.chooseCell2(3);
+        var food3 = arr3[Math.floor(Math.random()*arr3.length)];
+        var arr4 = this.chooseCell2(5);
+        var food4 = arr4[Math.floor(Math.random()*arr4.length)];
         if (food1) {
             var newX = food1[0];
             var newY = food1[1];

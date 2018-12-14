@@ -1,4 +1,6 @@
-class Shun extends LivingCreature{
+var LivingCreature = require("./class.js");
+
+module.exports=class Shun extends LivingCreature{
     constructor(x, y, index) {
         super(x,y,index);
         this.energy = 12;
@@ -23,7 +25,8 @@ class Shun extends LivingCreature{
     }
 
     mult() {
-        var empty = random(this.chooseCell(0));
+        var arr = this.chooseCell(0);
+        var empty = arr[Math.floor(Math.random()*arr.length)];
         if (empty && this.energy>14) {
             var newX = empty[0];
             var newY = empty[1];
@@ -34,7 +37,8 @@ class Shun extends LivingCreature{
     }
 
     move(){
-        var empty = random(this.chooseCell(0));
+        var arr = this.chooseCell(0);
+        var empty = arr[Math.floor(Math.random()*arr.length)];
         this.energy-=2;
         if (empty) {
             var newX = empty[0];
@@ -48,8 +52,10 @@ class Shun extends LivingCreature{
     }
 
     eat(){
-        var food1 = random(this.chooseCell(1));
-        var food2 = random(this.chooseCell(4));
+        var arr1 = this.chooseCell(1);
+        var food1 = arr1[Math.floor(Math.random()*arr1.length)];
+        var arr2 = this.chooseCell(4);
+        var food2 = arr2[Math.floor(Math.random()*arr2.length)];
         if (food1) {
             var newX = food1[0];
             var newY = food1[1];

@@ -1,4 +1,7 @@
-class Mard extends LivingCreature{
+var LivingCreature = require("./class.js");
+var Shun = require("./shun.js");
+
+module.exports=class Mard extends LivingCreature{
     constructor(x, y, index) {
         super(x,y,index);
         this.energy = 21;
@@ -94,9 +97,11 @@ class Mard extends LivingCreature{
     }
 
     mult() {
-        var bazm1 = random(this.chooseCell(5));
+        var arr1 = this.chooseCell(5);
+        var bazm1 = arr1[Math.floor(Math.random()*arr1.length)];
             if (bazm1 && this.energy>17) {
-                var empty = random(this.chooseCell(0));
+                var arr = this.chooseCell(0);
+                var empty = arr[Math.floor(Math.random()*arr.length)];                
                 if(empty){
                 var newX = empty[0];
                 var newY = empty[1];
@@ -106,7 +111,8 @@ class Mard extends LivingCreature{
             }
         }
 
-        var empty = random(this.chooseCell(0));
+        var arr2 = this.chooseCell(0);
+        var empty = arr2[Math.floor(Math.random()*arr2.length)];
             if (empty && this.energy>17) {
                 var newX = empty[0];
                 var newY = empty[1];
@@ -117,10 +123,12 @@ class Mard extends LivingCreature{
      }
 
     move(){
-        var paxnel = random(this.chooseCell2(4));
+        var arr = this.chooseCell2(4);
+        var paxnel = arr[Math.floor(Math.random()*arr.length)];
         this.energy-=2;
         if(paxnel){
-            var empty = random(this.chooseCell(0));
+            var arr1 = this.chooseCell(0);
+            var empty = arr1[Math.floor(Math.random()*arr1.length)];
             if(empty){
                 var newX = empty[0];
                 var newY = empty[1];
@@ -133,8 +141,10 @@ class Mard extends LivingCreature{
     }
 
     eat(){
-        var food1 = random(this.chooseCell(2));
-        var food2 = random(this.chooseCell(3));
+        var arr1 = this.chooseCell(2);
+        var food1 = arr1[Math.floor(Math.random()*arr1.length)];
+        var arr2 = this.chooseCell(3);
+        var food2 = arr2[Math.floor(Math.random()*arr2.length)];
         if (food1) {
             var newX = food1[0];
             var newY = food1[1];
