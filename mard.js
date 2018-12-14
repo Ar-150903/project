@@ -1,19 +1,7 @@
-class Mard {
+class Mard extends LivingCreature{
     constructor(x, y, index) {
-        this.x = x;
-        this.y = y;
-        this.index = index;
+        super(x,y,index);
         this.energy = 21;
-        this.directions1 = [
-            [this.x - 1, this.y - 1],
-            [this.x, this.y - 1],
-            [this.x + 1, this.y - 1],
-            [this.x - 1, this.y],
-            [this.x + 1, this.y],
-            [this.x - 1, this.y + 1],
-            [this.x, this.y + 1],
-            [this.x + 1, this.y + 1]
-        ]    
 
         this.directions2 = [
             [this.x - 1, this.y - 1],
@@ -72,8 +60,8 @@ class Mard {
         ];
     }
 
-    getNewDirections1(){
-        this.directions1 = [
+    getNewDirections(){
+        this.directions = [
             [this.x - 1, this.y - 1],
             [this.x, this.y - 1],
             [this.x + 1, this.y - 1],
@@ -85,19 +73,9 @@ class Mard {
         ]
     }
 
-    chooseCell1(character) {
-        this.getNewDirections1();
-        var found = [];
-        for (var i in this.directions1) {
-            var x = this.directions1[i][0];
-            var y = this.directions1[i][1];
-            if (x >= 0 && x < matrix[0].length && y >= 0 && y < matrix.length) {
-                if (matrix[y][x] == character) {
-                    found.push(this.directions1[i]);
-                }
-            }
-        }
-        return found;
+    chooseCell(character) {
+        this.getNewDirections();
+        return super.chooseCell(character);
     }
 
     chooseCell2(character) {
@@ -116,9 +94,9 @@ class Mard {
     }
 
     mult() {
-        var bazm1 = random(this.chooseCell1(5));
+        var bazm1 = random(this.chooseCell(5));
             if (bazm1 && this.energy>17) {
-                var empty = random(this.chooseCell1(0));
+                var empty = random(this.chooseCell(0));
                 if(empty){
                 var newX = empty[0];
                 var newY = empty[1];
@@ -128,7 +106,7 @@ class Mard {
             }
         }
 
-        var empty = random(this.chooseCell1(0));
+        var empty = random(this.chooseCell(0));
             if (empty && this.energy>17) {
                 var newX = empty[0];
                 var newY = empty[1];
@@ -142,7 +120,7 @@ class Mard {
         var paxnel = random(this.chooseCell2(4));
         this.energy-=2;
         if(paxnel){
-            var empty = random(this.chooseCell1(0));
+            var empty = random(this.chooseCell(0));
             if(empty){
                 var newX = empty[0];
                 var newY = empty[1];
@@ -155,8 +133,8 @@ class Mard {
     }
 
     eat(){
-        var food1 = random(this.chooseCell1(2));
-        var food2 = random(this.chooseCell1(3));
+        var food1 = random(this.chooseCell(2));
+        var food2 = random(this.chooseCell(3));
         if (food1) {
             var newX = food1[0];
             var newY = food1[1];
