@@ -1,6 +1,16 @@
- matrix = [];
+var express = require('express');
+var app = express();
+var server = require('http').Server(app);
+var io = require('socket.io')(server);
+
+app.use(express.static("."));
+app.get('/', function (req, res) {
+   res.redirect('index.html');
+});
+server.listen(3000);
+
+matrix = [];
 matrix = fillMatrix(50, 50);
-console.log(matrix);
 
 function fillMatrix(n, m) {
     var matrix = [];
@@ -91,7 +101,14 @@ shunArr = [];
         }
     }
 
-setInterval(drawServerayin,1000);
+var arajin = false;
+io.on('connection', function(socket){
+    if(!arajin){
+        setInterval(drawServerayin,300);
+        arajin = true;
+    }
+}); 
+
 
 function drawServerayin() {
     for (var i in grassArr) {
@@ -132,4 +149,5 @@ function drawServerayin() {
         shunArr[i].mult();
         shunArr[i].die();
     }
+    io.sockets.emit("matrix", matrix);
 }

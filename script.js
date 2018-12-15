@@ -1,12 +1,12 @@
 function setup() {
-    frameRate(5);
-    createCanvas(matrix[0].length * side, matrix.length * side);
+    createCanvas(50 * side, 50 * side);
     background('#acacac');
 }
 
+socket = io();
 side = 20;
 
-function draw() {
+function drawMatrix(matrix) {
 
     for (var y = 0; y < matrix.length; y++) {
         for (var x = 0; x < matrix[y].length; x++) {
@@ -47,3 +47,6 @@ function draw() {
         }
     }
 }
+
+
+socket.on("matrix",drawMatrix)
