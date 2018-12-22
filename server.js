@@ -151,3 +151,28 @@ function drawServerayin() {
     }
     io.sockets.emit("matrix", matrix);
 }
+
+weatherinit=1;
+weather = "summer";
+
+function sendWeather(){
+    if(weatherinit==1){
+        weather = "summer";
+    }
+    else if(weatherinit==2){
+        weather = "autumn";
+    }
+    else if(weatherinit==3){
+        weather = "winter";
+    }
+    else if(weatherinit==4){
+        weather = "spring";
+    }
+    else if(weatherinit==5){
+        weatherinit=1;
+    }
+    weatherinit++;
+    io.sockets.emit("exanak", weather);
+}
+
+setInterval(sendWeather, 3000);
