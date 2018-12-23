@@ -31,16 +31,13 @@ function drawMatrix(matrix) {
         for (var x = 0; x < matrix[y].length; x++) {
 
             if (matrix[y][x] == 1) {
-                if(weather=="summer"){
+                if(weather=="summer" ||weather=="spring"){
                     fill("green");
-                }
-                else if(weather=="autumn"){
-                    fill("darkgreen");
                 }
                 else if(weather=="winter"){
                     fill("white");
                 }
-                else if(weather=="spring"){
+                else if(weather=="autumn"){
                     fill("lightgreen");
                 }
             }
@@ -58,7 +55,12 @@ function drawMatrix(matrix) {
             }
 
             else if (matrix[y][x] == 5) {
-                fill("#ffe0bd");
+                if(weather=="summer"){
+                    fill("#FFEF9F");
+                }
+                else{
+                    fill("#ffe0bd");
+                }
             }
 
             else if (matrix[y][x] == 6) {

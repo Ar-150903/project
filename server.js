@@ -23,31 +23,31 @@ function fillMatrix(n, m) {
     return matrix;
 }
 
-for (var g = 0; g < 600; g++) {
+for (var g = 0; g <= 600; g++) {
     var x = Math.floor(Math.random() * 50);
     var y = Math.floor(Math.random() * 50);
     matrix[y][x] = 1;
 }
 
-for (var g = 0; g < 100; g++) {
+for (var g = 0; g <= 100; g++) {
     var x = Math.floor(Math.random() * 50);
     var y = Math.floor(Math.random() * 50);
     matrix[y][x] = 2;
 }
 
-for (var g = 0; g < 65; g++) {
+for (var g = 0; g <= 65; g++) {
     var x = Math.floor(Math.random() * 50);
     var y = Math.floor(Math.random() * 50);
     matrix[y][x] = 3;
 }
 
-for (var g = 0; g < 120; g++) {
+for (var g = 0; g <= 120; g++) {
     var x = Math.floor(Math.random() * 50);
     var y = Math.floor(Math.random() * 50);
     matrix[y][x] = 4;
 }
 
-for (var g = 0; g < 120; g++) {
+for (var g = 0; g <= 120; g++) {
     var x = Math.floor(Math.random() * 50);
     var y = Math.floor(Math.random() * 50);
     matrix[y][x] = 5;
@@ -152,27 +152,59 @@ function drawServerayin() {
     io.sockets.emit("matrix", matrix);
 }
 
-weatherinit=1;
+weatherinit=0;
 weather = "summer";
 
 function sendWeather(){
-    if(weatherinit==1){
-        weather = "summer";
-    }
-    else if(weatherinit==2){
-        weather = "autumn";
-    }
-    else if(weatherinit==3){
-        weather = "winter";
-    }
-    else if(weatherinit==4){
+    weatherinit++;
+    if(weatherinit%4==0){
         weather = "spring";
     }
-    else if(weatherinit==5){
-        weatherinit=1;
+    else if(weatherinit%4==3){
+        weather = "winter";
     }
-    weatherinit++;
+    else if(weatherinit%4==2){
+        weather = "autumn";
+    }
+    else if(weatherinit%4==1){
+        weather = "summer";
+    }
     io.sockets.emit("exanak", weather);
 }
 
 setInterval(sendWeather, 3000);
+
+xotAchec=600;
+xotakerCnvec=100;
+gishatichCnvec=65;
+amenakerCnvec=120;
+mardCnvec=120;
+shunCnvec=0;
+
+xotakerMahacav=0;
+gishatichMahacav=0;
+amenakerMahacav=0;
+mardMahacav=0;
+shunMahacav=0;
+var fs = require('fs');
+
+var obj = {"info": [] };
+function statistics() {
+    obj.info.pop();
+    obj.info.shift();
+    var file = "statistics.json"
+    obj.info.push({"Achac xoteri qanaky": xotAchec,
+                "Cnvac xotakerneri qanaky": xotakerCnvec,
+                "Cnvac gishatichneri qanaky": gishatichCnvec,
+                "Cnvac amenakerneri qanaky": amenakerCnvec,
+                "Cnvac mardkanc qanaky": mardCnvec,
+                "Cnvac shneri qanaky": shunCnvec});
+    obj.info.push({"Mahacac xotakerneri qanaky": xotakerMahacav,
+                "Mahacac gishatichneri qanaky": gishatichMahacav,
+                "Mahacac amenakerneri qanaky": amenakerMahacav,
+                "Mahacac mardkanc qanaky": mardMahacav,
+                "Mahacac shneri qanaky": shunMahacav});
+    fs.writeFileSync(file, JSON.stringify(obj));
+}
+
+setInterval(statistics, 5000)

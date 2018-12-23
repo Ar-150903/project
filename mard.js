@@ -108,6 +108,7 @@ module.exports=class Mard extends LivingCreature{
                 matrix[newY][newX] = 5;
                 var newMr = new Mard(newX, newY);
                 mardArr.push(newMr);
+                mardCnvec++;
             }
         }
 
@@ -119,6 +120,7 @@ module.exports=class Mard extends LivingCreature{
                 matrix[newY][newX] = 6;
                 var newSh = new Shun(newX, newY);
                 shunArr.push(newSh);
+                shunCnvec++;
             }
      }
 
@@ -189,6 +191,7 @@ module.exports=class Mard extends LivingCreature{
                     mardArr.splice(i,1);
                 }
             }
+            mardMahacav++;
         }
     }
 }

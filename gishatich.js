@@ -33,6 +33,7 @@ module.exports=class Gishatich extends LivingCreature{
             matrix[newY][newX] = 3;
             var newGsh = new Gishatich(newX, newY);
             gishatichArr.push(newGsh);
+            gishatichCnvec++;
         }
     }
 
@@ -101,6 +102,7 @@ module.exports=class Gishatich extends LivingCreature{
                     gishatichArr.splice(i,1);
                 }
             }
+            gishatichMahacav++;
         }
     }
 }

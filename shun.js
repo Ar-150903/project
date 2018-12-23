@@ -33,6 +33,7 @@ module.exports=class Shun extends LivingCreature{
             matrix[newY][newX] = 6;
             var newSh = new Shun(newX, newY);
             shunArr.push(newSh);
+            shunCnvec++;
         }
     }
 
@@ -101,6 +102,7 @@ module.exports=class Shun extends LivingCreature{
                     shunArr.splice(i,1);
                 }
             }
+            shunMahacav++;
         }
     }
 }

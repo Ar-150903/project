@@ -104,6 +104,7 @@ module.exports=class  Amenaker extends LivingCreature{
             matrix[newY][newX] = 4;
             var newAm = new Amenaker(newX, newY);
             amenakerArr.push(newAm);
+            amenakerCnvec++;
         }
     }
 
@@ -210,6 +211,7 @@ module.exports=class  Amenaker extends LivingCreature{
                     amenakerArr.splice(i,1);
                 }
             }
+            amenakerMahacav++;
         }
     }
 }
