@@ -186,12 +186,26 @@ gishatichMahacav=0;
 amenakerMahacav=0;
 mardMahacav=0;
 shunMahacav=0;
+
+xotKeran=0;
+xotakerKeran=0;
+gishatichKeran=0;
+amenakerKeran=0;
+mardKeran=0;
+shunKeran=0;
+
+
 var fs = require('fs');
 
 var obj = {"info": [] };
-function statistics() {
-    obj.info.pop();
-    obj.info.shift();
+function statistics() {    
+    xotKa=grassArr.length;
+    xotakerKa=xotakerArr.length;
+    gishatichKa=gishatichArr.length;
+    amenakerKa=amenakerArr.length;
+    mardKa=mardArr.length;
+    shunKa=shunArr.length;
+    obj.info.splice(0,4);
     var file = "statistics.json"
     obj.info.push({"Achac xoteri qanaky": xotAchec,
                 "Cnvac xotakerneri qanaky": xotakerCnvec,
@@ -204,7 +218,19 @@ function statistics() {
                 "Mahacac amenakerneri qanaky": amenakerMahacav,
                 "Mahacac mardkanc qanaky": mardMahacav,
                 "Mahacac shneri qanaky": shunMahacav});
+    obj.info.push({"Kervac xoteri qanaky": xotKeran,
+                "Kervac xotakerneri qanaky": xotakerKeran,
+                "Kervac gishatichneri qanaky": gishatichKeran,
+                "Kervac amenakerneri qanaky": amenakerKeran,
+                "Kervac mardkanc qanaky": mardKeran,
+                "Kervac shneri qanaky": shunKeran}); //shunKeran=0 misht 
+    obj.info.push({"Exac xoteri qanaky": xotKa,
+                "Exac xotakerneri qanaky": xotakerKa,
+                "Exac gishatichneri qanaky": gishatichKa,
+                "Exac amenakerneri qanaky": amenakerKa,
+                "Exac mardkanc qanaky": mardKa,
+                "Exac shneri qanaky": shunKa});            
     fs.writeFileSync(file, JSON.stringify(obj));
 }
 
-setInterval(statistics, 5000)
+setInterval(statistics, 3000)

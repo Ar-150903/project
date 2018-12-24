@@ -72,7 +72,7 @@ module.exports=class Shun extends LivingCreature{
             this.x = newX;
             this.y = newY;
             this.energy+=2;
-
+            xotKeran++;
         }
 
         if (food2) {
@@ -90,7 +90,7 @@ module.exports=class Shun extends LivingCreature{
             this.x = newX;
             this.y = newY;
             this.energy+=4;
-
+            amenakerKeran++;
         }
     }
 

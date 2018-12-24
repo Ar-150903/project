@@ -143,13 +143,11 @@ module.exports=class Mard extends LivingCreature{
     }
 
     eat(){
-        var arr1 = this.chooseCell(2);
-        var food1 = arr1[Math.floor(Math.random()*arr1.length)];
-        var arr2 = this.chooseCell(3);
-        var food2 = arr2[Math.floor(Math.random()*arr2.length)];
-        if (food1) {
-            var newX = food1[0];
-            var newY = food1[1];
+        var arr = this.chooseCell(2);
+        var food = arr[Math.floor(Math.random()*arr.length)];
+        if (food) {
+            var newX = food[0];
+            var newY = food[1];
             matrix[newY][newX] = 5;
             matrix[this.y][this.x] = 0;
 
@@ -162,24 +160,7 @@ module.exports=class Mard extends LivingCreature{
             this.x = newX;
             this.y = newY;
             this.energy+=2;
-
-        }
-
-        if (food2) {
-            var newX = food2[0];
-            var newY = food2[1];
-            matrix[newY][newX] = 5;
-            matrix[this.y][this.x] = 0;
-
-            for(var i in gishatichArr){
-                if(gishatichArr[i].x==newX && gishatichArr[i].y==newY){
-                    gishatichArr.splice(i,1);
-                }
-            }
-
-            this.x = newX;
-            this.y = newY;
-            this.energy+=2;
+            xotakerKeran++;
         }
     }
 

@@ -72,7 +72,7 @@ module.exports=class Gishatich extends LivingCreature{
             this.x = newX;
             this.y = newY;
             this.energy+=4;
-
+            xotakerKeran++;
         }
 
         if (food2) {
@@ -90,7 +90,7 @@ module.exports=class Gishatich extends LivingCreature{
             this.x = newX;
             this.y = newY;
             this.energy+=1;
-
+            mardKeran++;
         }
     }
 

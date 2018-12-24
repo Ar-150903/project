@@ -147,7 +147,7 @@ module.exports=class  Amenaker extends LivingCreature{
             this.x = newX;
             this.y = newY;
             this.energy+=2;
-
+            xotKeran++;
         }
 
         else if (food2) {
@@ -165,7 +165,7 @@ module.exports=class  Amenaker extends LivingCreature{
             this.x = newX;
             this.y = newY;
             this.energy+=4;
-
+            xotakerKeran++;
         }
 
         else if (food3) {
@@ -182,6 +182,7 @@ module.exports=class  Amenaker extends LivingCreature{
             this.x = newX;
             this.y = newY;
             this.energy+=6;
+            gishatichKeran++;
         }
 
         else if (food4) {
@@ -199,7 +200,7 @@ module.exports=class  Amenaker extends LivingCreature{
             this.x = newX;
             this.y = newY;
             this.energy+=1;
-
+            mardKeran++;
         }
     }
 

@@ -70,7 +70,7 @@ module.exports=class Xotaker extends LivingCreature{
             this.x = newX;
             this.y = newY;
             this.energy+=2;
-
+            xotKeran++;
         }
     }
 
